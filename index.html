@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile and Contact Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #8fb300;
+        }
+        .container {
+            /* width: 80%; */
+            /* max-width: 600px; */
+            margin: 20px;
+        }
+        .nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav a {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .nav a.active {
+            background-color: rgb(179, 0, 255);
+        }
+        .profile, .contact-form {
+            display: none;
+        }
+        .profile.active, .contact-form.active {
+            display: block;
+        }
+        .profile img {
+            width: 100px;
+            border-radius: 0;
+            display: block;
+            margin: 0 auto;
+        }
+        .bi0-name {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+        .email {
+            text-align: center;
+        }
+        .contact-form {
+        border: 2px solid black; 
+        padding: 30px;
+        width: 80%;   
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .priority-group {
+            display: flex;
+            justify-content: space-around;
+            margin: 10px 0;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        .button-group button {
+            width: 48%;
+            padding: 10px;
+            border: none;
+            color: white;
+            border-radius: 5px;
+        }
+        .submit-btn {
+            background-color: rgb(171, 238, 144);
+        }
+        .clear-btn {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="nav">
+            <a href="#profile" onclick="showPage('profile')" class="active">Bio</a>
+            <a href="#contact" onclick="showPage('contact')">Contact Form</a>
+        </div>
+
+        <!-- Page 1: Bio/Profile -->
+        <div id="profile" class="profile active">
+            <h2>Bio</h2>
+            <img src="MY PROFILE PICS.jpg" alt="Profile Picture">
+            <h3 class="bi0-name">Hillary Ugwuoke</h3>
+            <p class="email"><strong>Email:</strong> ugohils@gmail.com</p>
+            <h2>Experience</h2>
+            <h3>Software Test Analyst and Front End Developer</h3>
+            <p> I design web applications according to briefs from client and modify designs to meet client's specification. 
+            I work as software Test Analyst. I work with a team of Business Analysts, Project Managers, Web Designers, Back End Developers,and Test Analysts 
+            to meet project goals and create effective user experience with digital products. I use skills in debugging to check code, improve code and enhance the
+        functionality and user experience of web applications and computer programs. I supervise junior test Analyst, provide training and motivate team members.</p>
+        </div>
+
+        <!-- Page 2: Contact Form -->
+        <div id="contact" class="contact-form">
+            <h2>Contact Form</h2>
+            <form>
+                <div class="form-group">
+                    <label for="project-name">Project Name</label>
+                    <input type="text" id="project-name" name="project-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="assigned-to">Assigned To</label>
+                    <input type="text" id="assigned-to" name="assigned-to" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="start-date">Start Date</label>
+                    <input type="date" id="start-date" name="start-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="end-date">End Date</label>
+                    <input type="date" id="end-date" name="end-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Priority</label>
+                    <div class="priority-group">
+                        <label><input type="radio" name="priority" value="High" required> High</label>
+                        <label><input type="radio" name="priority" value="Average" required> Average</label>
+                        <label><input type="radio" name="priority" value="Low" required> Low</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description Message</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="submit-btn">Submit</button>
+                    <button type="reset" class="clear-btn">Clear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showPage(page) {
+            // Toggle navigation links
+            document.querySelectorAll('.nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`.nav a[href="#${page}"]`).classList.add('active');
+
+            // Toggle pages
+            document.querySelectorAll('.profile, .contact-form').forEach(div => {
+                div.classList.remove('active');
+            });
+            document.getElementById(page).classList.add('active');
+        }
+    </script>
+</body>
+</html>
